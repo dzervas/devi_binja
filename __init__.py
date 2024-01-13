@@ -34,7 +34,7 @@ class binja_devi():
 
 
     def devirtualize_calls(self, call_list, modules):
-        binja_filename = os.path.basename(self.bv.file.filename)
+        binja_filename = os.path.basename(self.bv.file.original_filename)
 
         for module in modules:
             if module["name"] == binja_filename:
@@ -44,7 +44,7 @@ class binja_devi():
         start = int(loaded_module["base"], 16)
         end = start + loaded_module["size"]
 
-        print("[!] Adding virtual calls for {binja_filename}")
+        print(f"[!] Adding virtual calls for {binja_filename}")
 
         for v_call in call_list:
             for call in v_call:
